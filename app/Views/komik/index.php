@@ -3,7 +3,16 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="mt-4">Daftar Komik</h2>
+            <a href="<?= base_url('komiks/create'); ?>" class="btn btn-sm btn-outline-success my-4">Tambah Data</a>
+
+            <h2 class="my-2">Daftar Komik</h2>
+
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </div>
+            <?php endif; ?>
+
 
             <table class="table">
                 <thead>
@@ -19,9 +28,9 @@
                     <?php foreach ($komik as $k) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
-                            <td><img src="<?= base_url("img"); ?>/<?= $k['sampul']; ?>" alt="" class="sampul"></td>
+                            <td><img src="<?= base_url('img'); ?>/<?= $k['sampul']; ?>" alt="" class="sampul"></td>
                             <td><?= $k['judul']; ?></td>
-                            <td><a href="" class="btn btn-secondary btn-sm">Detail</a></td>
+                            <td><a href="<?= base_url('komiks'); ?>/<?= $k['slug']; ?>" class="btn btn-secondary btn-sm">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
