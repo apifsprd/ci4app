@@ -16,8 +16,13 @@
                             <p class="card-text"><b>Penulis :</b> <?= $komik['penulis']; ?></p>
                             <p class="card-text"><small class="text-muted"><b>Penerbit :</b> <?= $komik['penerbit']; ?></small></p>
 
-                            <a href="" class="btn btn-sm btn-outline-warning">Edit</a>
-                            <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+                            <a href="<?= base_url('komiks/edit'); ?>/<?= $komik['slug']; ?>" class="btn btn-sm btn-outline-warning">Edit</a>
+
+                            <form action="<?= base_url('komiks'); ?>/<?= $komik['id']; ?>" method="POST" class="d-inline">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apakah anda yakin?');">Delete</button>
+                            </form>
                             <br><br>
                             <a href="<?= base_url('komiks'); ?>">Kembali ke daftar komik</a>
                         </div>
